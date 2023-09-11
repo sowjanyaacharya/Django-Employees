@@ -1,0 +1,47 @@
+{% load static %}    <!-- This is the first project by using django-admin startproject djangofirst-->
+<!DOCTYPE html> <!--get from html boiler plate-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Django Basics</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<link rel ="stylesheet" href = "{% static 'css/style.css'%}">
+</head>
+<body>
+  
+  <div class = "container pt-5"><!--padding top 5-->
+    <h1>Employees List</h1>  <!--displaying the details of employees in the table form-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full_name</th>
+        <th scope="col">Phoneno</th>
+        <th scope="col">Emailaddress</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for emp in employees %}  <!--context key employees-->  <!--through looping fetching one after other details from the table which is actually fetched from the views-->
+      <tr>
+        <td scope="row">{{forloop.counter}}</td>   <!--for continuous looping instead of breaking of id number even if we delete the middle data-->
+        <td><a href = "{% url 'employee_details' emp.id %}">{{emp.first_name}} {{emp.last_name}}</a></td>  <!--this is used to have the link for the employee detailed profile here employee_details is the view name which is fetching the details thriugh emp.id-->
+        <td>{{emp.phone}}</td>
+        <td>{{emp.email}}</td>
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+ <!-- <img src = "{% static 'img/loho8.webp' %}" alt = "" width = "80">
+{% for i in employees %}
+  <h4>{{ i }}</h4>
+{% endfor %}-->
+</div>
+</body>
+</html>
