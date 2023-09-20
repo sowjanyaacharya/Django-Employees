@@ -29,7 +29,7 @@
       {% for emp in employees %}  <!--context key employees-->  <!--through looping fetching one after other details from the table which is actually fetched from the views-->
       <tr>
         <td scope="row">{{forloop.counter}}</td>   <!--for continuous looping instead of breaking of id number even if we delete the middle data-->
-        <td><a href = "{% url 'employee_details' emp.id %}">{{emp.first_name}} {{emp.last_name}}</a></td>  <!--this is used to have the link for the employee detailed profile here employee_details is the view name which is fetching the details thriugh emp.id-->
+        <td><a href = "{% url 'employee_details' emp.id %}">{{emp.first_name}} {{emp.last_name}}</a></td>  <!--this is used to have the link for the employee detailed profile here employee_details is the view name which is fetching the details through emp.id-->
         <td>{{emp.phone}}</td>
         <td>{{emp.email}}</td>
         
